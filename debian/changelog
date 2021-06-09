@@ -1,0 +1,5 @@
+python-xmlsec (1.3.11-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Wed, 09 Jun 2021 15:30:43 +0100
