@@ -11,6 +11,7 @@ Build-Depends: debhelper-compat (= 12), dh-python,
  python3-pkgconfig,
  python3-pytest,
  python3-setuptools,
+ python3-setuptools-scm
 Standards-Version: 4.3.0
 Homepage: https://github.com/mehcode/python-xmlsec
 Rules-Requires-Root: no
