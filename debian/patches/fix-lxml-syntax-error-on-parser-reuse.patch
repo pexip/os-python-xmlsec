@@ -1,0 +1,19 @@
+From: Chris MacNaughton <chris.macnaughton@ubuntu.com>
+Subject: mporting xmlsec breaks second lxml.etree.parse call
+
+Work around an lxml bug where parser reuse causes parsing failure
+by resetting the parser for each call.
+
+Origin: upstream, https://github.com/mehcode/python-xmlsec/issues/96
+
+--- a/tests/base.py
++++ b/tests/base.py
+@@ -99,7 +99,7 @@ class TestMemoryLeaks(unittest.TestCase)
+ 
+     def load_xml(self, name, xpath=None):
+         """returns xml.etree"""
+-        root = etree.parse(self.path(name)).getroot()
++        root = etree.parse(self.path(name), parser=etree.XMLParser()).getroot()
+         if xpath is None:
+             return root
+         return root.find(xpath)
