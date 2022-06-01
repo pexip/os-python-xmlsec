@@ -15,6 +15,7 @@ Build-Depends: debhelper-compat (= 12), dh-python,
 Standards-Version: 4.3.0
 Homepage: https://github.com/mehcode/python-xmlsec
 Rules-Requires-Root: no
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 
 Package: python3-xmlsec
 Architecture: any
