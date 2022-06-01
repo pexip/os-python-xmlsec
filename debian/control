@@ -1,8 +1,9 @@
 Source: python-xmlsec
 Section: python
 Priority: optional
-Maintainer: Debian Python Team <team+python@tracker.debian.org>
-Uploaders:
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+XSBC-Pexip-Original-Uploaders:
  Chris MacNaughton <chris.macnaughton@ubuntu.com>,
 Build-Depends:
  debhelper-compat (= 13),
@@ -23,6 +24,7 @@ Standards-Version: 4.6.0
 Homepage: https://github.com/mehcode/python-xmlsec
 Vcs-Browser: https://salsa.debian.org/python-team/packages/python-xmlsec
 Vcs-Git: https://salsa.debian.org/python-team/packages/python-xmlsec.git
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 
 Package: python3-xmlsec
 Architecture: any
