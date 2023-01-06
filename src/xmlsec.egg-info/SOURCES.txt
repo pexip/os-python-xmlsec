@@ -1,8 +1,8 @@
+.pre-commit-config.yaml
 .readthedocs.yaml
 LICENSE
 MANIFEST.in
 README.rst
-mypy.ini
 pyproject.toml
 setup.cfg
 setup.py
@@ -86,5 +86,3 @@ tests/data/sign5-out.xml
 tests/data/sign6-in.bin
 tests/data/sign6-out.bin
 tests/data/sign_template.xml
-typeshed/lxml/__init__.pyi
-typeshed/lxml/etree.pyi

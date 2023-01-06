@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# This test will fail because libxmlsec1 matching test fails too:
+# https://salsa.debian.org/xml-sgml-team/xmlsec1/-/blob/master/debian/patches/skip-failing-tests.patch
+export PYBUILD_TEST_ARGS=-k 'not test_sign_case5'
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild

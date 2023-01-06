@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: xmlsec
-Version: 1.3.11
+Version: 1.3.13
 Summary: Python bindings for the XML Security Library
 Home-page: https://github.com/mehcode/python-xmlsec
 Author: Bulat Gaifullin
@@ -10,8 +10,8 @@ Maintainer-email: oleg.hoefling@gmail.com
 License: MIT
 Project-URL: Documentation, https://xmlsec.readthedocs.io
 Project-URL: Source, https://github.com/mehcode/python-xmlsec
+Project-URL: Changelog, https://github.com/mehcode/python-xmlsec/releases
 Keywords: xmlsec
-Platform: UNKNOWN
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Intended Audience :: Developers
 Classifier: Intended Audience :: System Administrators
@@ -84,7 +84,7 @@ Linux (Debian)
 
 .. code-block:: bash
 
-   apt-get install libxml2-dev libxmlsec1-dev libxmlsec1-openssl
+   apt-get install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl
 
 
 Note: There is no required version of LibXML2 for Ubuntu Precise,
@@ -249,5 +249,3 @@ License
 
 Unless otherwise noted, all files contained within this project are licensed under the MIT opensource license.
 See the included ``LICENSE`` file or visit `opensource.org <http://opensource.org/licenses/MIT>`_ for more information.
-
-

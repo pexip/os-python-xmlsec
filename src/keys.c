@@ -142,7 +142,7 @@ static PyObject* PyXmlSec_KeyFromFile(PyObject* self, PyObject* args, PyObject* 
     Py_ssize_t data_size = 0;
 
     PYXMLSEC_DEBUG("load key from file - start");
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OH|z:from_file", kwlist, &file, &format, &password)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OI|z:from_file", kwlist, &file, &format, &password)) {
         goto ON_FAIL;
     }
 
@@ -453,7 +453,7 @@ static int PyXmlSec_KeyNameSet(PyObject* self, PyObject* value, void* closure) {
     }
 
     if (value == NULL) {
-        if (xmlSecKeySetName(key->handle, value) < 0) {
+        if (xmlSecKeySetName(key->handle, NULL) < 0) {
             PyXmlSec_SetLastError("cannot delete name");
             return -1;
         }
