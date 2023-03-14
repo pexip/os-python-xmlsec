@@ -1,3 +1,2 @@
-version=3
-opts=uversionmangle=s/(rc|a|b|c)/~$1/ \
-https://pypi.debian.net/xmlsec/xmlsec-(.+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+version=4
+https://pypi.debian.net/xmlsec/xmlsec-@ANY_VERSION@@ARCHIVE_EXT@
