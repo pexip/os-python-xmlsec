@@ -10,6 +10,7 @@
 #include "common.h"
 #include "platform.h"
 #include "exception.h"
+#include "lxml.h"
 
 #include <xmlsec/xmlsec.h>
 #include <xmlsec/crypto.h>
@@ -117,6 +118,37 @@ static char PyXmlSec_PyShutdown__doc__[] = \
 static PyObject* PyXmlSec_PyShutdown(PyObject* self) {
     PyXmlSec_Free(free_mode);
     Py_RETURN_NONE;
+}
+
+static char PyXmlSec_GetLibXmlSecVersion__doc__[] = \
+    "get_libxmlsec_version() -> tuple\n"
+    "Returns Version tuple of wrapped libxmlsec library.";
+static PyObject* PyXmlSec_GetLibXmlSecVersion() {
+    return Py_BuildValue("(iii)", XMLSEC_VERSION_MAJOR, XMLSEC_VERSION_MINOR, XMLSEC_VERSION_SUBMINOR);
+}
+
+static char PyXmlSec_GetLibXmlVersion__doc__[] = \
+    "get_libxml_version() -> tuple[int, int, int]\n"
+    "Returns version tuple of libxml2 library xmlsec is using.";
+static PyObject* PyXmlSec_GetLibXmlVersion() {
+    return Py_BuildValue(
+        "(iii)",
+        PyXmlSec_GetLibXmlVersionMajor(),
+        PyXmlSec_GetLibXmlVersionMinor(),
+        PyXmlSec_GetLibXmlVersionPatch()
+    );
+}
+
+static char PyXmlSec_GetLibXmlCompiledVersion__doc__[] = \
+    "get_libxml_compiled_version() -> tuple[int, int, int]\n"
+    "Returns version tuple of libxml2 library xmlsec was compiled with.";
+static PyObject* PyXmlSec_GetLibXmlCompiledVersion() {
+    return Py_BuildValue(
+        "(iii)",
+        PyXmlSec_GetLibXmlCompiledVersionMajor(),
+        PyXmlSec_GetLibXmlCompiledVersionMinor(),
+        PyXmlSec_GetLibXmlCompiledVersionPatch()
+    );
 }
 
 static char PyXmlSec_PyEnableDebugOutput__doc__[] = \
@@ -275,18 +307,23 @@ static PyObject* PyXmlSec_PyIORegisterDefaultCallbacks(PyObject *self) {
 }
 
 static char PyXmlSec_PyIORegisterCallbacks__doc__[] = \
+    "register_callbacks(input_match_callback, input_open_callback, input_read_callback, input_close_callback) -> None\n"
     "Register globally a custom set of IO callbacks with xmlsec.\n\n"
-    ":param callable input_match_callback: A callable that takes a filename `bytestring` and "
+    ":param input_match_callback: A callable that takes a filename `bytestring` and "
     "returns a boolean as to whether the other callbacks in this set can handle that name.\n"
-    ":param callable input_open_callback: A callable that takes a filename and returns some "
+    ":type input_match_callback: ~collections.abc.Callable[[bytes], bool]\n"
+    ":param input_open_callback: A callable that takes a filename and returns some "
     "context object (e.g. a file object) that the remaining callables in this set will be passed "
     "during handling.\n"
+    ":type input_open_callback: ~collections.abc.Callable[[bytes], Any]\n"
     // FIXME: How do we handle failures in ^^ (e.g. can't find the file)?
-    ":param callable input_read_callback: A callable that that takes the context object from the "
+    ":param input_read_callback: A callable that that takes the context object from the "
     "open callback and a buffer, and should fill the buffer with data (e.g. BytesIO.readinto()). "
     "xmlsec will call this function several times until there is no more data returned.\n"
-    ":param callable input_close_callback: A callable that takes the context object from the "
+    ":type input_read_callback: ~collections.abc.Callable[[Any, memoryview], int]\n"
+    ":param input_close_callback: A callable that takes the context object from the "
     "open callback and can do any resource cleanup necessary.\n"
+    ":type input_close_callback: ~collections.abc.Callable[[Any], None]\n"
     ;
 static PyObject* PyXmlSec_PyIORegisterCallbacks(PyObject *self, PyObject *args, PyObject *kwargs) {
     static char *kwlist[] = {
@@ -380,6 +417,24 @@ static PyMethodDef PyXmlSec_MainMethods[] = {
         (PyCFunction)PyXmlSec_PyShutdown,
         METH_NOARGS,
         PyXmlSec_PyShutdown__doc__
+    },
+    {
+        "get_libxmlsec_version",
+        (PyCFunction)PyXmlSec_GetLibXmlSecVersion,
+        METH_NOARGS,
+        PyXmlSec_GetLibXmlSecVersion__doc__
+    },
+    {
+        "get_libxml_version",
+        (PyCFunction)PyXmlSec_GetLibXmlVersion,
+        METH_NOARGS,
+        PyXmlSec_GetLibXmlVersion__doc__
+    },
+    {
+        "get_libxml_compiled_version",
+        (PyCFunction)PyXmlSec_GetLibXmlCompiledVersion,
+        METH_NOARGS,
+        PyXmlSec_GetLibXmlCompiledVersion__doc__
     },
     {
         "enable_debug_trace",
