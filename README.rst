@@ -3,18 +3,21 @@ python-xmlsec
 
 .. image:: https://img.shields.io/pypi/v/xmlsec.svg?logo=python&logoColor=white
    :target: https://pypi.python.org/pypi/xmlsec
-.. image:: https://img.shields.io/travis/com/mehcode/python-xmlsec/master.svg?logo=travis&logoColor=white&label=Travis%20CI
-   :target: https://travis-ci.org/mehcode/python-xmlsec
+.. image:: https://results.pre-commit.ci/badge/github/xmlsec/python-xmlsec/master.svg
+   :target: https://results.pre-commit.ci/latest/github/xmlsec/python-xmlsec/master
+   :alt: pre-commit.ci status
 .. image:: https://img.shields.io/appveyor/ci/hoefling/xmlsec/master.svg?logo=appveyor&logoColor=white&label=AppVeyor
    :target: https://ci.appveyor.com/project/hoefling/xmlsec
-.. image:: https://github.com/mehcode/python-xmlsec/workflows/manylinux2010/badge.svg
-   :target: https://github.com/mehcode/python-xmlsec/actions?query=workflow%3A%22manylinux2010%22
-.. image:: https://github.com/mehcode/python-xmlsec/workflows/MacOS/badge.svg
-   :target: https://github.com/mehcode/python-xmlsec/actions?query=workflow%3A%22MacOS%22
-.. image:: https://github.com/mehcode/python-xmlsec/workflows/linuxbrew/badge.svg
-   :target: https://github.com/mehcode/python-xmlsec/actions?query=workflow%3A%22linuxbrew%22
-.. image:: https://codecov.io/gh/mehcode/python-xmlsec/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/mehcode/python-xmlsec
+.. image:: https://github.com/mehcode/python-xmlsec/actions/workflows/manylinux.yml/badge.svg
+   :target: https://github.com/mehcode/python-xmlsec/actions/workflows/manylinux.yml
+.. image:: https://github.com/mehcode/python-xmlsec/actions/workflows/macosx.yml/badge.svg
+   :target: https://github.com/mehcode/python-xmlsec/actions/workflows/macosx.yml
+.. image:: https://github.com/mehcode/python-xmlsec/actions/workflows/linuxbrew.yml/badge.svg
+   :target: https://github.com/mehcode/python-xmlsec/actions/workflows/linuxbrew.yml
+.. image:: https://github.com/mehcode/python-xmlsec/actions/workflows/opensuse-tumbleweed.yml/badge.svg
+   :target: https://github.com/mehcode/python-xmlsec/actions/workflows/opensuse-tumbleweed.yml
+.. image:: https://codecov.io/gh/xmlsec/python-xmlsec/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/xmlsec/python-xmlsec
 .. image:: https://img.shields.io/readthedocs/xmlsec/latest?logo=read-the-docs
    :target: https://xmlsec.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
@@ -34,7 +37,7 @@ Check the `examples <https://xmlsec.readthedocs.io/en/latest/examples.html>`_ se
 Requirements
 ************
 - ``libxml2 >= 2.9.1``
-- ``libxmlsec1 >= 1.2.18``
+- ``libxmlsec1 >= 1.2.33``
 
 Install
 *******
@@ -133,7 +136,7 @@ Building from source
 
    .. code-block:: bash
 
-      git clone https://github.com/mehcode/python-xmlsec.git
+      git clone https://github.com/xmlsec/python-xmlsec.git
 
 #. Change into the ``python-xmlsec`` root directory.
 
