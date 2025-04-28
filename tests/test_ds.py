@@ -132,7 +132,6 @@ class TestSignContext(base.TestMemoryLeaks):
 
     def test_sign_case4(self):
         """Should sign a file using a dynamically created template, key from PEM and an X509 cert with custom ns."""
-
         root = self.load_xml("sign4-in.xml")
         xmlsec.tree.add_ids(root, ["ID"])
         elem_id = root.get('ID', None)
@@ -183,7 +182,11 @@ class TestSignContext(base.TestMemoryLeaks):
         self.assertEqual("rsakey.pem", ctx.key.name)
 
         ctx.sign(sign)
-        self.assertEqual(self.load_xml("sign5-out.xml"), root)
+        if (1, 2, 36) <= xmlsec.get_libxmlsec_version() <= (1, 2, 37):
+            expected_xml_file = 'sign5-out-xmlsec_1_2_36_to_37.xml'
+        else:
+            expected_xml_file = 'sign5-out.xml'
+        self.assertEqual(self.load_xml(expected_xml_file), root)
 
     def test_sign_binary_bad_args(self):
         ctx = xmlsec.SignatureContext()
@@ -249,7 +252,7 @@ class TestSignContext(base.TestMemoryLeaks):
         self.check_verify(5)
 
     def check_verify(self, i):
-        root = self.load_xml("sign%d-out.xml" % i)
+        root = self.load_xml("sign{}-out.xml".format(i))
         xmlsec.tree.add_ids(root, ["ID"])
         sign = xmlsec.tree.find_node(root, consts.NodeSignature)
         self.assertIsNotNone(sign)

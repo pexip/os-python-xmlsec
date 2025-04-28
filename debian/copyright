@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: xmlsec
-Source: https://github.com/mehcode/python-xmlsec
+Source: https://github.com/xmlsec/python-xmlsec
 
 Files: *
 Copyright: 2014 Ryan Leckey
